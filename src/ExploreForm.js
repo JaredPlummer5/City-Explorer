@@ -7,8 +7,6 @@ import axios from "axios";
 
 function ExploreForm(props) {
 
-
-
     //If an error occurs, it calls the errorDisplay function to handle the error and display it.
     const fetchData = async () => {
         // The fetchData function is defined as an asynchronous function. 
