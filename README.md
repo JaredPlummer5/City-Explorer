@@ -166,6 +166,10 @@ Estimate of time needed to complete: **1 day**
 
 Start time: **9:30am**
 
-Finish time: **11am**
+Actual time needed to complete: _____
+
+
+Actual time needed to complete: **2 hours**
+
 
 Actual time needed to complete: **2 hours**
