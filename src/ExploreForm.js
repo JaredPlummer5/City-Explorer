@@ -4,9 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 // ExploreForm component
+
 function ExploreForm(props) {
-
-
 
     //If an error occurs, it calls the errorDisplay function to handle the error and display it.
     const fetchData = async () => {
@@ -43,6 +42,10 @@ function ExploreForm(props) {
     const handleInputChange = (event) => {
         props.setInput(event.target.value);
     };
+<<<<<<< HEAD
+=======
+    
+>>>>>>> Lab6
     return (
         
         // The ExploreForm component is rendered, displaying a form for user input. 
