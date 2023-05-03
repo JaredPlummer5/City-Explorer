@@ -43,8 +43,6 @@ function ExploreForm(props) {
         props.setInput(event.target.value);
     };
 
-
-
     return (
         
         // The ExploreForm component is rendered, displaying a form for user input. 
