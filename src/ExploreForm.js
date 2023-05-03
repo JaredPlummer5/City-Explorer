@@ -43,7 +43,6 @@ function ExploreForm(props) {
     const handleInputChange = (event) => {
         props.setInput(event.target.value);
     };
-    let br = <br/>
     return (
         
         // The ExploreForm component is rendered, displaying a form for user input. 
@@ -67,9 +66,7 @@ function ExploreForm(props) {
                     onChange={handleInputChange}
                     required
                 />
-                <Form.Text style={{ color: 'rgb(196, 2, 2)' }}>
-                    {props.errorMessageRerender ? props.errorMessageRerender.message + ": Please enter a vaild location" : ''}
-                </Form.Text>
+                <Form.Text style={{color: 'rgb(196, 2, 2)'}}>{props.errorMessageRerender ? props.errorMessageRerender.message : ''}</Form.Text>
                 {/* Button to trigger useData function */}
                 <Button
                     variant="success"
