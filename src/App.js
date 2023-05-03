@@ -42,7 +42,7 @@ function App() {
                     </a>
                 </nav>
             </div>
-            
+
             {/* 
             The ExploreForm component is rendered. 
             It passes necessary props, including cityInfo, input, setInput, errorDisplay, and setDisplayMap.
@@ -69,9 +69,11 @@ function App() {
                 <Card.Body style={{ backgroundColor: '#2E7D32', display: displayMap }}>
                     <Card.Title className='cityInfo'>{cityInfo.display_name}</Card.Title>
                     <Card.Text style={{ display: displayMap }} id='lonAndlad'>
-                        <span className='cityInfo'>Longitude: {cityInfo.lon}</span>
+                        <div style={{ display: 'flex', justifyContent:'space-evenly' }}>
+                            <span className='cityInfo'>Longitude: {cityInfo.lon}</span>
 
-                        <span className='cityInfo'>Latitude: {cityInfo.lat}</span>
+                            <span className='cityInfo'>Latitude: {cityInfo.lat}</span>
+                        </div>
                     </Card.Text>
                     <Card.Img src={imageSrc} />
                 </Card.Body>
