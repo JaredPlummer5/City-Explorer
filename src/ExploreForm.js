@@ -42,10 +42,9 @@ function ExploreForm(props) {
     const handleInputChange = (event) => {
         props.setInput(event.target.value);
     };
-<<<<<<< HEAD
-=======
-    
->>>>>>> Lab6
+
+
+
     return (
         
         // The ExploreForm component is rendered, displaying a form for user input. 
