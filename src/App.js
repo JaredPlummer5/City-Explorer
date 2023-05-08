@@ -6,19 +6,23 @@ import ExploreForm from './ExploreForm';
 
 import Card from 'react-bootstrap/Card'
 
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+
 // Main App component
 function App() {
 
     // Declare state variables for cityInfo and input
     const [cityInfo, setCityInfo] = useState({});
     const [input, setInput] = useState('');
-    const [displayMap, setDisplayMap] = useState('none')
-    const [errorMessageRerender, seterrorMessageRerender] = useState(null)
+    const [displayMap, setDisplayMap] = useState('none');
+    const [errorMessageRerender, seterrorMessageRerender] = useState(null);
 
 
 
     // Generates the map image URL if cityInfo's Latitude and Longitude properties exist 
-    const imageSrc = cityInfo.lat && cityInfo.lon ? `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONQI_API_KEY}&center=${cityInfo.lat},${cityInfo.lon}&format=png&zoom=12` : '';
+    //const imageSrc = `https://tiles.locationiq.com/v3/streets/raster/{z}/{x}/{y}@2x.png?key=${process.env.REACT_APP_LOCATIONQI_API_KEY}`;
+
+    // const imageSrc = cityInfo.lat && cityInfo.lon ? `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONQI_API_KEY}&center=${cityInfo.lat},${cityInfo.lon}&format=png&zoom=12` : '';
 
     // The errorDisplay function is defined. 
     // It sets the errorMessageRerender state to the provided error message object.
@@ -42,7 +46,7 @@ function App() {
                     </a>
                 </nav>
             </div>
-            
+
             {/* 
             The ExploreForm component is rendered. 
             It passes necessary props, including cityInfo, input, setInput, errorDisplay, and setDisplayMap.
@@ -65,15 +69,26 @@ function App() {
                  and the map image is displayed using the Card.Img component.
             */}
             <Card style={{ width: '450px', height: '450px' }} id='card'>
-
                 <Card.Body style={{ backgroundColor: '#2E7D32', display: displayMap }}>
                     <Card.Title className='cityInfo'>{cityInfo.display_name}</Card.Title>
                     <Card.Text style={{ display: displayMap }} id='lonAndlad'>
                         <span className='cityInfo'>Longitude: {cityInfo.lon}</span>
-
                         <span className='cityInfo'>Latitude: {cityInfo.lat}</span>
                     </Card.Text>
-                    <Card.Img src={imageSrc} />
+                    {
+                        cityInfo.lat && cityInfo.lon && (
+                        <MapContainer center={[cityInfo.lat, cityInfo.lon]} zoom={12} scrollWheelZoom={false} style={{ height: "400px" }}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <Marker position={[cityInfo.lat, cityInfo.lon]}>
+                                <Popup>
+                                    {cityInfo.display_name}
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
+                    )}
                 </Card.Body>
             </Card>
 
