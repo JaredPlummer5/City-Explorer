@@ -3,9 +3,12 @@ import React from 'react';
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
+import Stack from 'react-bootstrap/Stack'
 // ExploreForm component
 
 function ExploreForm(props) {
+
+
 
     //If an error occurs, it calls the errorDisplay function to handle the error and display it.
     const fetchData = async () => {
@@ -22,7 +25,13 @@ function ExploreForm(props) {
             props.setDisplayMap('block');
             // If the is no error it set the error state variable to back to null
             props.errorDisplay(null);
-            
+
+            props.fetchDataWeatherData();
+
+
+
+
+
         } catch (error) {
             //If an error occurs during the API call, it is caught in the catch block, 
             //and the errorDisplay function is called to handle the error.
@@ -40,44 +49,69 @@ function ExploreForm(props) {
     // It receives an event object representing the input change event. 
     // It updates the input state value by calling the setInput function and passing the new value from event.target.value.
     const handleInputChange = (event) => {
+
+        // Update the input state value
         props.setInput(event.target.value);
+
     };
 
+    const handleReset = () => {
+        // Reset the cityInfo and displayMap states
+        props.setCityInfo({});
+        props.setDisplayMap('none');
+
+
+
+    }
+
+
+
+    // const handleReset
+
     return (
-        
+
         // The ExploreForm component is rendered, displaying a form for user input. 
         // It uses the Form component from react - bootstrap to create the form structure. 
-          
+
         <div className='ExploreFormContainer'>
+            <Stack direction="horizontal" gap={3}>
+                <Form.Group className='ExploreForm'>
+                    {/* Label for input field */}
+                    <Form.Label id='formLabel' htmlFor="city">Enter a city name:</Form.Label>
+                    <br />
+                    {/* Input field to enter city name */}
+                    <Form.Control
 
-            <Form.Group className='ExploreForm'>
-                {/* Label for input field */}
-                <Form.Label id='formLabel' htmlFor="city">Enter a city name:</Form.Label>
-                <br />
-                {/* Input field to enter city name */}
-                <Form.Control
+                        className='ExploreFormParts'
+                        id='ExploreFormInputBox'
+                        type="city"
+                        placeholder="City Name"
+                        value={props.input}
+                        // The input field is bound to the input state value, and the handleInputChange function handles the changes. 
+                        onChange={handleInputChange}
 
-                    className='ExploreFormParts'
-                    id='ExploreFormInputBox'
-                    type="city"
-                    placeholder="City Name"
-                    value={props.input}
-                    // The input field is bound to the input state value, and the handleInputChange function handles the changes. 
-                    onChange={handleInputChange}
-                    required
-                />
-                <Form.Text style={{color: 'rgb(196, 2, 2)'}}>{props.errorMessageRerender ? props.errorMessageRerender.message : ''}</Form.Text>
-                {/* Button to trigger useData function */}
-                <Button
-                    variant="success"
-                    className='ExploreFormParts'
-                    id='ExploreFormButton'
-                    // Clicking the button triggers the fetchData function.
-                    onClick={fetchData}
-                >
-                    Explore!
-                </Button>
-            </Form.Group>
+                    />
+                    <Form.Text style={{ color: 'rgb(196, 2, 2)' }}>{props.errorMessageRerender ? props.errorMessageRerender.message : ''}</Form.Text>
+                    {/* Button to trigger useData function */}
+                    <Button
+                        variant="success"
+                        className='ExploreFormParts'
+                        id='ExploreFormButton'
+                        // Clicking the button triggers the fetchData function.
+                        onClick={() => {
+                            handleReset();
+                            fetchData();
+                            props.setLocation(props.input)
+                        }
+                        }
+
+                    >
+                        Explore!
+                    </Button>
+                    <div className="vr" />
+                    <Button variant="outline-danger" >Reset</Button>
+                </Form.Group>
+            </Stack>
         </div>
     );
 }

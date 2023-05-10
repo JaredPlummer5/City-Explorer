@@ -1,45 +1,36 @@
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
-body{
+
+body {
     background-color: #F5F5F5;
     color: #333333;
     padding: auto auto auto auto;
+    
 }
 
-.App{
+.App {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +38,7 @@ body{
     text-align: center;
 }
 
-#EyeGraber{
+#EyeGraber {
     background-color: #2E7D32;
     display: flex;
     justify-content: space-between;
@@ -56,69 +47,141 @@ body{
 
 }
 
-nav{
+nav {
     display: flex;
-    justify-content:space-between; 
+    justify-content: space-between;
     align-items: center;
     margin: 10px 30px 10px 5px;
     width: 10%;
 }
 
-a{
-    color: #FFC107 ;
+a {
+    color: #FFC107;
 }
 
-.ExploreFormParts{
+.ExploreFormParts {
     margin: 5px 0px 10px 0px;
-   
-   
+
+
 }
 
-#nameOfBusiness{
+#nameOfBusiness {
     display: flex;
-    justify-content:space-between; 
+    justify-content: space-between;
     align-items: center;
     color: #FFC107;
 
 }
 
-#cardContainer{
+#cardContainer {
     width: 100%;
     height: 500px;
     display: flex;
-    justify-content:space-between; 
+    justify-content: space-between;
     align-items: center;
 }
 
-
-
-.cityInfo{
+.weather-cards-wrapper {
     display: flex;
-    justify-content:center; 
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#weatherDisplay {
+    margin-top: 25px;
+    width: 950px;
+    background-color: #0277BD;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 35%;
+
+
+}
+
+.cityInfo {
+    display: flex;
+    justify-content: center;
     color: #FFC107;
 }
 
-#lonAndlad{
+#lonAndlad {
     display: flex;
-    justify-content:space-evenly; 
+    justify-content: space-evenly;
     color: #FFC107;
 }
-.ExploreForm{
-   
+
+.ExploreForm {
+
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
-#ExploreFormInputBox{
+
+#ExploreFormInputBox {
     margin-top: -20px;
     width: 300px;
 }
 
-.ExploreFormContainer{
+.ExploreFormContainer {
     background-color: #0277BD;
     width: 100%;
 
 }
 
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.map-card {
+    margin: 10px;
+    width: 650px;
+    height: 650px;
+    background-color:#f8f9fa;
+    
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+
+}
+
+.weather-card {
+    animation: slide-in 0.5s ease-in-out;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.25);
+    padding: 40px;
+    margin: 10px;
+    width: 350px;
+    background-color: #f8f9fa;
+      
+    background-image: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 2px, #fff 2px, #fff 4px, rgba(255, 255, 255, 0) 4px, rgba(255, 255, 255, 0) 6px, #fff 6px, #fff 8px, rgba(255, 255, 255, 0) 8px, rgba(255, 255, 255, 0) 10px),
+    radial-gradient(circle at 50% 0, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 2px, transparent 2px);
+
+}
+
+#Weather-card-header{
+    background-color:#2E7D32;
+    color: white ;
+    font-weight: bold;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+
+}
+
+#Weather-card-header-Container {
+    display: flex;
+    justify-content: center;
+}

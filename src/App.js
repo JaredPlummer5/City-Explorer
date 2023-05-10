@@ -3,10 +3,10 @@ import { useState } from 'react';
 import './App.css';
 import React from 'react';
 import ExploreForm from './ExploreForm';
-
-import Card from 'react-bootstrap/Card'
-
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import axios from 'axios'
+import Nav from './Nav.js'
+import Weather from './Weather';
+import CityInfoCard from './CityInfoCard';
 
 // Main App component
 function App() {
@@ -17,12 +17,52 @@ function App() {
     const [displayMap, setDisplayMap] = useState('none');
     const [errorMessageRerender, seterrorMessageRerender] = useState(null);
 
+    const [location, setLocation] = useState('')
+    const [data, setData] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [displayWeatherData, setDisplayWeatherData] = useState('none');
+    
+    
+    const fetchDataWeatherData = async () => {
+        try {
+            let response = await axios.get(`http://localhost:3001/weather/?searchQuery=${input}`);
+            console.log(response.data);
+            setData(response.data);
+            setErrorMessage('');
+            setDisplayWeatherData('block')
+            console.log(response)
 
+        }
+        catch (error) {
+            setDisplayWeatherData('none')
+            setErrorMessage(error.response.data.message)
+            console.log(error.response.data.message);
 
+        }
+    }
+
+    let daysOfTheWeek;
+    daysOfTheWeek = data.map(days => {
+
+        let weatherComponent = <Weather
+            errorMessage={errorMessage}
+            errorMessageRerender={errorMessageRerender}
+            displayWeatherData={displayWeatherData}
+            key={days?.date}
+            displayMap={displayMap}
+            cityName={days?.city_name}
+            input={input}
+            lon={days?.lon}
+            lat={days?.lat}
+            date={days?.date}
+            description={days?.description}
+            location={location}
+
+        />
+        return weatherComponent
+
+    });
     // Generates the map image URL if cityInfo's Latitude and Longitude properties exist 
-    //const imageSrc = `https://tiles.locationiq.com/v3/streets/raster/{z}/{x}/{y}@2x.png?key=${process.env.REACT_APP_LOCATIONQI_API_KEY}`;
-
-    // const imageSrc = cityInfo.lat && cityInfo.lon ? `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONQI_API_KEY}&center=${cityInfo.lat},${cityInfo.lon}&format=png&zoom=12` : '';
 
     // The errorDisplay function is defined. 
     // It sets the errorMessageRerender state to the provided error message object.
@@ -34,24 +74,17 @@ function App() {
     // The structure of the web page is defined. 
     // It includes the business name, navigation links, and a paragraph to display error messages if any.
     return (
-        <div className="App">
-            <div id='EyeGraber'>
-                <h1 id="nameOfBusiness">Lost&Found: The Wandering Guru</h1>
-                <nav>
-                    <a href='nowhere.com'>
-                        Home
-                    </a>
-                    <a href='nowhere.com'>
-                        Cities
-                    </a>
-                </nav>
-            </div>
+        <div>
+            <Nav key={'Nav'} />
 
-            {/* 
-            The ExploreForm component is rendered. 
+            {/*
+            The ExploreForm component is rendered.
             It passes necessary props, including cityInfo, input, setInput, errorDisplay, and setDisplayMap.
             */}
             <ExploreForm
+                key={'ExploreForm'}
+                //setLocation={setLocation}
+                fetchDataWeatherData={fetchDataWeatherData}
                 cityInfo={cityInfo}
                 setCityInfo={setCityInfo}
                 input={input}
@@ -59,40 +92,43 @@ function App() {
                 errorMessageRerender={errorMessageRerender}
                 errorDisplay={errorDisplay}
                 setDisplayMap={setDisplayMap}
+                setLocation={setLocation}
             />
-
 
             {/*  
                  The Card component is rendered, displaying the city information and the map image. 
                  The card's display depends on the cityInfo and displayMap states. 
                  The city information is displayed in the card's body, 
                  and the map image is displayed using the Card.Img component.
-            */}
-            <Card style={{ width: '450px', height: '450px' }} id='card'>
-                <Card.Body style={{ backgroundColor: '#2E7D32', display: displayMap }}>
-                    <Card.Title className='cityInfo'>{cityInfo.display_name}</Card.Title>
-                    <Card.Text style={{ display: displayMap }} id='lonAndlad'>
-                        <span className='cityInfo'>Longitude: {cityInfo.lon}</span>
-                        <span className='cityInfo'>Latitude: {cityInfo.lat}</span>
-                    </Card.Text>
-                    {
-                        cityInfo.lat && cityInfo.lon && (
-                        <MapContainer center={[cityInfo.lat, cityInfo.lon]} zoom={12} scrollWheelZoom={false} style={{ height: "400px" }}>
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            <Marker position={[cityInfo.lat, cityInfo.lon]}>
-                                <Popup>
-                                    {cityInfo.display_name}
-                                </Popup>
-                            </Marker>
-                        </MapContainer>
-                    )}
-                </Card.Body>
-            </Card>
+                */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+               
+                <div id='weatherDisplay' style={{display: displayWeatherData, padding:'6px 6px 6px 6px'}}>
+                    
+                    <div style={{ display: 'flex', justifyContent: 'center', margin: "45px auto auto auto" }} >
+                        
+                        <img src='https://i.gifer.com/4jwl.gif' alt='thunder cloud' style={{ width: '100px', height: '100px', alignItems: 'center' }} />
+                        
+                        <h1 style={{ display: 'flex', justifyContent: 'center' }} >Weather</h1>
+                        
+                        <img src='https://i.gifer.com/4jwl.gif' alt='thunder cloud' style={{ width: '100px', height: '100px' }} />
+                    
+                    </div>
+                   
+                    <div className="weather-cards-wrapper">
+                        
+                        {daysOfTheWeek}
+                   
+                    </div>
+               
+                </div>
 
 
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <CityInfoCard key={'CityInfoCard'} displayMap={displayMap} cityInfo={cityInfo} />
+
+                </div>
+            </div>
         </div>
     );
 }
