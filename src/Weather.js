@@ -17,7 +17,7 @@ export default function Weather(props) {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Card className="weather-card">
+            <Card class="raindrop" id="weather-card">
                 <div id="Weather-card-header-Container">
                     <Card.Header id="Weather-card-header">{props.location}</Card.Header>
                 </div>

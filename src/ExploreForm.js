@@ -4,12 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import Stack from 'react-bootstrap/Stack'
-// ExploreForm component
+
 
 function ExploreForm(props) {
-
-
-
     //If an error occurs, it calls the errorDisplay function to handle the error and display it.
     const fetchData = async () => {
         // The fetchData function is defined as an asynchronous function. 
@@ -27,10 +24,7 @@ function ExploreForm(props) {
             props.errorDisplay(null);
 
             props.fetchDataWeatherData();
-
-
-
-
+            
 
         } catch (error) {
             //If an error occurs during the API call, it is caught in the catch block, 
@@ -54,7 +48,6 @@ function ExploreForm(props) {
         props.setInput(event.target.value);
 
     };
-
     const handleReset = () => {
         // Reset the cityInfo and displayMap states
         props.setCityInfo({});
@@ -63,11 +56,6 @@ function ExploreForm(props) {
 
 
     }
-
-
-
-    // const handleReset
-
     return (
 
         // The ExploreForm component is rendered, displaying a form for user input. 
@@ -108,6 +96,7 @@ function ExploreForm(props) {
                     >
                         Explore!
                     </Button>
+                    <Button onClick={() => props.setShow(true)}>Show Movies</Button>
                     <div className="vr" />
                     <Button variant="outline-danger" >Reset</Button>
                 </Form.Group>
@@ -115,6 +104,5 @@ function ExploreForm(props) {
         </div>
     );
 }
-
 // Export ExploreForm component
 export default ExploreForm;

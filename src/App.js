@@ -7,6 +7,8 @@ import axios from 'axios'
 import Nav from './Nav.js'
 import Weather from './Weather';
 import CityInfoCard from './CityInfoCard';
+import Movie from './Movie';
+import { Button } from 'react-bootstrap';
 
 // Main App component
 function App() {
@@ -21,8 +23,25 @@ function App() {
     const [data, setData] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [displayWeatherData, setDisplayWeatherData] = useState('none');
+
+
+    const [movieData, setMovieData] = useState([]);
+    const [show, setShow] = useState(false)
+
     
-    
+
+    const fetchMovieData = async () => {
+
+        try {
+            let response = await axios.get(`http://localhost:3001/movies?searchQuery=${input}`);
+            setMovieData(response.data);
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+
     const fetchDataWeatherData = async () => {
         try {
             let response = await axios.get(`http://localhost:3001/weather/?searchQuery=${input}`);
@@ -31,6 +50,7 @@ function App() {
             setErrorMessage('');
             setDisplayWeatherData('block')
             console.log(response)
+            fetchMovieData();
 
         }
         catch (error) {
@@ -76,7 +96,7 @@ function App() {
     return (
         <div>
             <Nav key={'Nav'} />
-
+            
             {/*
             The ExploreForm component is rendered.
             It passes necessary props, including cityInfo, input, setInput, errorDisplay, and setDisplayMap.
@@ -93,42 +113,44 @@ function App() {
                 errorDisplay={errorDisplay}
                 setDisplayMap={setDisplayMap}
                 setLocation={setLocation}
+                setShow={setShow}
+                
             />
 
+
             {/*  
-                 The Card component is rendered, displaying the city information and the map image. 
-                 The card's display depends on the cityInfo and displayMap states. 
-                 The city information is displayed in the card's body, 
-                 and the map image is displayed using the Card.Img component.
-                */}
+            The Card component is rendered, displaying the city information and the map image. 
+            The card's display depends on the cityInfo and displayMap states. The city information is displayed in the card's body, and the map image is displayed using the Card.Img component.
+            */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-               
-                <div id='weatherDisplay' style={{display: displayWeatherData, padding:'6px 6px 6px 6px'}}>
-                    
+
+                <div id='weatherDisplay' style={{ display: displayWeatherData, padding: '6px 6px 6px 6px' }}>
+
                     <div style={{ display: 'flex', justifyContent: 'center', margin: "45px auto auto auto" }} >
-                        
+
                         <img src='https://i.gifer.com/4jwl.gif' alt='thunder cloud' style={{ width: '100px', height: '100px', alignItems: 'center' }} />
-                        
+
                         <h1 style={{ display: 'flex', justifyContent: 'center' }} >Weather</h1>
-                        
+
                         <img src='https://i.gifer.com/4jwl.gif' alt='thunder cloud' style={{ width: '100px', height: '100px' }} />
-                    
+
                     </div>
-                   
+
                     <div className="weather-cards-wrapper">
-                        
+
                         {daysOfTheWeek}
-                   
+
                     </div>
-               
+
                 </div>
 
-
+                
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <CityInfoCard key={'CityInfoCard'} displayMap={displayMap} cityInfo={cityInfo} />
 
                 </div>
             </div>
+            <Movie key={'Movie'} show={show} setShow={setShow} movieData={movieData} />
         </div>
     );
 }
