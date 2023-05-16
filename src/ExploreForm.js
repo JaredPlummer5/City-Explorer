@@ -85,9 +85,8 @@ function ExploreForm(props) {
                         variant="success"
                         className='ExploreFormParts'
                         id='ExploreFormButton'
-                        // Clicking the button triggers the fetchData function.
+                        // Clicking the button triggers the fetchData, setLocation and handleReset functions.
                         onClick={() => {
-                            handleReset();
                             fetchData();
                             props.setLocation(props.input)
                         }
@@ -96,9 +95,10 @@ function ExploreForm(props) {
                     >
                         Explore!
                     </Button>
+                    {/* Show the modal with a carousel of all the movie data */}
                     <Button onClick={() => props.setShow(true)}>Show Movies</Button>
                     <div className="vr" />
-                    <Button variant="outline-danger" >Reset</Button>
+                    <Button variant="outline-danger" onClick={handleReset} >Reset</Button>
                 </Form.Group>
             </Stack>
         </div>

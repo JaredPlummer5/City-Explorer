@@ -4,9 +4,11 @@ import Card from 'react-bootstrap/Card';
 export default function Weather(props) {
     let forecast;
 
+    // Check if an error message exists
     if (props.errorMessage !== '') {
         forecast = `${props?.errorMessage} : Forecast not found`;
     } else {
+        // Set the forecast data if no error message exists
         forecast = [
             <Card.Text>{props?.description}</Card.Text>,
             <Card.Text>Date: {props?.date}</Card.Text>,
@@ -15,6 +17,7 @@ export default function Weather(props) {
         ];
     }
 
+    // Render the Weather component
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Card class="raindrop" id="weather-card">
