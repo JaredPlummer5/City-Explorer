@@ -8,7 +8,7 @@ import Nav from './Nav.js'
 import Weather from './Weather';
 import CityInfoCard from './CityInfoCard';
 import Movie from './Movie';
-import { Button } from 'react-bootstrap';
+
 
 // Main App component
 function App() {
