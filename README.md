@@ -22,6 +22,7 @@ To build and run this application on your own machine, follow these steps:
 5. Access the application in your web browser at `http://localhost:3000` (or a different port if specified).
 
 ## Architecture
+
 The application is built using React, a JavaScript library for building user interfaces. It leverages React Bootstrap for styling and components. The client-side code is written in JavaScript (ES6+). The backend server is built using Express, a Node.js web application framework. It handles API requests to retrieve weather and movie data from external APIs. The server uses Axios for making HTTP requests. The frontend and backend communicate via RESTful API endpoints.
 
 The application architecture includes the following components:
