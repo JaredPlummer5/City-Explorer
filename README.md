@@ -5,105 +5,34 @@
 
 Link: [My website](https://main--cheery-palmier-0de630.netlify.app/)
 
-## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
-The application also displays a map image of the city if the latitude and longitude information is available. It manages city information, user input, map display, and error messages. It renders the header, navigation links, an ExploreForm component for user input, and a Card component to display the city information and map image. It includes an input field and a button for triggering the retrieval of city data. It also handles making API requests to retrieve city information based on the user's input. The problem domain of this application seems to be related to location-based services or city information retrieval. The application allows users to explore and obtain details about different cities. It utilizes the LocationIQ API to fetch the necessary data, including latitude, longitude, and city name.
+### Overview
+This application is a weather and movie exploration tool that allows users to search for weather forecasts and movie information based on a city name. The application integrates with external APIs to fetch weather data and movie data. The main purpose of this application is to provide users with an easy way to explore weather conditions and discover movies related to a specific city.
+
+### Getting Started
+To build and run this application on your own machine, follow these steps:
+
+1. Clone the repository or download the source code.
+2. Install the required dependencies by running `npm install` or `yarn install` in the project directory.
+3. Set up the necessary environment variables. Create a `.env` file in the root directory and define the required variables (e.g., `REACT_APP_LOCATIONQI_API_KEY` for the LocationIQ API key).
+4. Start the development server by running `npm start` or `yarn start`.
+5. Access the application in your web browser at `http://localhost:3000` (or a different port if specified).
+
+### Architecture
+The application is built using React, a JavaScript library for building user interfaces. It leverages React Bootstrap for styling and components. The client-side code is written in JavaScript (ES6+). The backend server is built using Express, a Node.js web application framework. It handles API requests to retrieve weather and movie data from external APIs. The server uses Axios for making HTTP requests. The frontend and backend communicate via RESTful API endpoints.
+
+The application architecture includes the following components:
+
+- **App.js**: The main component that serves as the entry point for the application. It manages the state, handles API requests, and renders other components.
+
+- **ExploreForm**: A form component that allows users to enter a city name and trigger the API requests to fetch weather and movie data.
+
+- **Weather**: A component that displays weather forecast information for a specific city. It receives weather data as props and renders the forecast details.
+
+- **CityInfoCard**: A component that displays city information, including a map image and other details.
+
+- **Movie**: A modal component that displays movie data in a carousel format. It receives movie data as props and renders the movie details.
 
 
-The purpose of building this application could be to provide a user-friendly interface for users to quickly access information about cities, such as geographical coordinates, in an interactive and visually appealing manner. This could be useful for various scenarios like trip planning, finding nearby attractions, or simply gaining general knowledge about different cities.
-
-## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
-
-Set up the development environment:
-
-Ensure you have Node.js installed on your machine. You can download it from the official Node.js website: <https://nodejs.org>
-Install a code editor or Integrated Development Environment (IDE) such as Visual Studio Code, Atom, or WebStorm.
-Create a new directory for your project and open a terminal or command prompt in that directory.
-
-Initialize a new React project:
-
-Run the following command in the terminal to create a new React project using Create React App (assuming you have Node.js installed):
-lua
-
-- npx create-react-app my-app
-
-This command will create a new directory named my-app with the basic structure and configuration files for a React project.
-
-Replace the default src/App.js and src/ExploreForm.js files in the newly created project with the code you provided.
-
-Install additional dependencies:
-
-Open the terminal in the project directory.
-Run the following command to install the required dependencies:
-
-- npm install react-bootstrap axios
-
-Obtain API keys:
-
-This application uses two APIs: LocationIQ and Mapbox. You need to obtain API keys from both services.
-
-- Sign up for a free account on LocationIQ (<https://locationiq.com>) and obtain an API key.
-
-- Sign up for a free account on Mapbox (<https://www.mapbox.com>) and obtain an API key.
-
-Replace the placeholder API keys:
-
-In the App.js file, replace process.env.REACT_APP_LOCATIONQI_API_KEY with your LocationIQ API key.
-Replace YOUR_MAPBOX_API_KEY with your Mapbox API key.
-
-Start the development server:
-
-Run the following command in the terminal to start the development server:
-
-- npm start
-
-This command will launch the application on a local development server, and you should be able to access it in your web browser at <http://localhost:3000>.
-
-That's it! You should now have the application running on your local machine. You can interact with it by entering city names in the input field and exploring the displayed city information.
-
-Note: It's important to handle the security of your API keys properly, especially if you plan to deploy the application to a public environment. Avoid committing your API keys to version control systems and consider using environment variables or other secure methods to manage your API keys.
-
-## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-
-The provided application is built using React, a popular JavaScript library for building user interfaces. Here is a detailed description of the application design, including the technologies used and other relevant design information:
-
-## Technologies Used
-
-- React: The main JavaScript library used for building the user interface and managing the application state.
-
-- React Bootstrap: A library that provides pre-designed components and styles for building responsive and visually appealing UI elements.
-Axios: A promise-based HTTP client used for making API requests to retrieve city information from external APIs.
-
-- HTML/CSS: The standard markup language and styling technology used for structuring and styling the web page.
-Components:
-
-- App: The main component of the application. It manages the state variables for city information, user input, map display, and error messages. It renders the header, navigation links, ExploreForm component, and a Card component to display the city information and map image.
-
-- ExploreForm: A component that renders a form for users to input a city name. It includes an input field and a button for triggering the retrieval of city data. It handles making API requests and communicates with the App component to update the state.
-
-- Card: A component from React Bootstrap used to display the city information and map image in a visually pleasing way.
-
-## Design Information
-
-- The application follows a component-based architecture, where different functionalities are encapsulated within separate reusable components.
-
-- React's useState hook is used for managing component state, allowing the application to update and re-render dynamically based on user input and API responses.
-
-- The application makes use of asynchronous functions and promises to handle API requests and responses in a non-blocking manner.
-
-- The LocationIQ API is used to retrieve city data based on user input, including latitude, longitude, and city name.
-
-- The Mapbox API is used to generate a static map image based on the latitude and longitude of the selected city.
-
-- The application utilizes React Bootstrap components for a responsive and visually consistent UI design.
-
-- CSS styles are applied to customize the appearance of the components, including background colors, font styles, and card dimensions.
-
-- Error handling is implemented to display error messages if API requests fail, and the application gracefully handles and communicates errors to the user.
-
-Overall, the application is designed to provide a user-friendly interface for exploring and obtaining information about cities. It leverages React's component-based architecture, state management, and the integration of external APIs to deliver an interactive and visually appealing experience for users.
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
@@ -166,20 +95,62 @@ Estimate of time needed to complete: **1 day**
 
 Start time: **9:30am**
 
-Actual time needed to complete: _____
+Finish time: **10:30am**
+
+Actual time needed to complete: **1 hour**
 
 Actual time needed to complete: **2 hours**
 
 Actual time needed to complete: **2 hours**
 
-## Name of feature: ****
+## Name of feature: **Making an API**
 
-Estimate of time needed to complete: **1 day**
+Estimate of time needed to complete: **5 hours**
 
 Start time: **9:30am**
 
+Finish time: **12:30am**
+
+Actual time needed to complete: **2 hours**
+
+## Name of feature: **Weather Bit API**
+
+### Day 1
+
+Estimate of time needed to complete: **4 hours**
+
+Start time: **9:30am**
+
+Finish time: **1:30pm**
+
 Actual time needed to complete: _____
 
-Actual time needed to complete: **2 hours**
+### Day 2
 
-Actual time needed to complete: **2 hours**
+Estimate of time needed to complete: **7 hours**
+
+Start time: **9:30am**
+
+Finish time: **4:30pm**
+
+Actual time needed to complete: _____
+
+### Day 3
+
+Estimate of time needed to complete: **2 hours**
+
+Start time: **9:30am**
+
+Finish time: **11:30pm**
+
+Actual time needed to complete: **3 days**
+
+## Name of feature: **Movie API**
+
+Estimate of time needed to complete: **7 hours**
+
+Start time: **9:30am**
+
+Finish time: **4:30pm**
+
+Actual time needed to complete: **7 hours**
