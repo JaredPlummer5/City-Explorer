@@ -41,11 +41,13 @@ The application architecture includes the following components:
 
 - 05-01-2023 5:30pm - Implemented location and coordinate retrieval functionality.
 
-- 05-02-2023 1:00pm - Added map display using retrieved latitude and longitude.
+- 05-04-2023 1:00pm - Added map display using retrieved latitude and longitude.
 
-- 05-03-2023 9:30am - Implemented error handling and display for API requests.
+- 05-05-2023 9:30am - Implemented error handling and display for API requests.
 
-- 05-04-2023 2:30pm - Added movie API integration and modal component to display movie details.
+- 05-14-2023 2:30pm - Added weather API integration and card components to display weather details.
+
+- 05-16-2023 2:30pm - Added movie API integration and modal component to display movie details.
 
 ## Credit and Collaborations
 
