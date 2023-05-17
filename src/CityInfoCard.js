@@ -7,9 +7,9 @@ import Card from 'react-bootstrap/Card';
 export default function CityInfoCard(props) {
     return (
 
-        <div style={{ marginTop: '45px' }}>
+        <div style={{ marginTop: '45px', borderRadius: '130px' }}>
 
-            <Card className="map-card" >
+            <Card className="map-card">
 
                 <Card.Body style={{ backgroundColor: '#2E7D32', display: props.displayMap }}>
 

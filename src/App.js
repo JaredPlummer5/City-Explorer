@@ -5,7 +5,7 @@ import React from 'react';
 import ExploreForm from './ExploreForm';
 import axios from 'axios';
 import Nav from './Nav.js';
-import Weather from './Weather';
+import Weather from './WeatherDay';
 import CityInfoCard from './CityInfoCard';
 import Movie from './Movie';
 
@@ -127,7 +127,7 @@ function App() {
             The card's display depends on the cityInfo and displayMap states. 
             The city information is displayed in the card's body, and the map image is displayed using the Card.Img component.
             */}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', margin:'10px 10px 10px 10px' }}>
                 <div id='weatherDisplay' style={{ display: displayWeatherData, padding: '6px 6px 6px 6px' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', margin: '45px auto auto auto' }}>
                         <img src='https://i.gifer.com/4jwl.gif' alt='thunder cloud' style={{ width: '100px', height: '100px', alignItems: 'center' }} />

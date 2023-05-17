@@ -27,7 +27,7 @@ body {
     background-color: #F5F5F5;
     color: #333333;
     padding: auto auto auto auto;
-    
+
 }
 
 .App {
@@ -95,7 +95,7 @@ a {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border-radius: 35%;
+    border-radius: 150px;
 
 
 }
@@ -149,9 +149,9 @@ a {
     margin: 10px;
     width: 650px;
     height: 650px;
-    background-color:#f8f9fa;
-    
-    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.25);
+    background-color: #f8f9fa;
+    border-radius: 100px;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
 
@@ -159,22 +159,22 @@ a {
 
 #weather-card {
     animation: slide-in 0.5s ease-in-out;
-    border-radius: 50%;
+
     background-color: #f8f9fa;
     box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.25);
     padding: 40px;
     margin: 10px;
     width: 350px;
     background-color: #f8f9fa;
-      
+    border-radius: 30px;
     background-image: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 2px, #fff 2px, #fff 4px, rgba(255, 255, 255, 0) 4px, rgba(255, 255, 255, 0) 6px, #fff 6px, #fff 8px, rgba(255, 255, 255, 0) 8px, rgba(255, 255, 255, 0) 10px),
-    radial-gradient(circle at 50% 0, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 2px, transparent 2px);
+        radial-gradient(circle at 50% 0, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 2px, transparent 2px);
 
 }
 
-#Weather-card-header{
-    background-color:#2E7D32;
-    color: white ;
+#Weather-card-header {
+    background-color: #2E7D32;
+    color: white;
     font-weight: bold;
     width: fit-content;
     display: flex;
@@ -185,4 +185,19 @@ a {
 #Weather-card-header-Container {
     display: flex;
     justify-content: center;
+}
+
+
+#raindrop {
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.raindrop-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
 }
