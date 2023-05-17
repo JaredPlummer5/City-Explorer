@@ -32,7 +32,7 @@ function App() {
     // Function to fetch movie data from the server
     const fetchMovieData = async () => {
         try {
-            let response = await axios.get(`https://explore-yxyu.onrender.com/movies?searchQuery=${input}`);
+            let response = await axios.get(`https://explore-yxyu.onrender.com/movie?searchQuery=${input}`);
             setMovieData(response.data);
             setMovieError('')
         } catch (error) {
