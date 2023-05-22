@@ -121,12 +121,6 @@ function App() {
 
             />
 
-
-            {/*  
-            The Card component is rendered, displaying the city information and the map image. 
-            The card's display depends on the cityInfo and displayMap states. 
-            The city information is displayed in the card's body, and the map image is displayed using the Card.Img component.
-            */}
             <div style={{ display: 'flex', justifyContent: 'center', margin:'10px 10px 10px 10px' }}>
                 <div id='weatherDisplay' style={{ display: displayWeatherData, padding: '6px 6px 6px 6px' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', margin: '45px auto auto auto' }}>
