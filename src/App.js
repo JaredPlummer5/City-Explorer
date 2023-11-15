@@ -60,7 +60,7 @@ function App() {
 
     let daysOfTheWeek;
     console.log("data", data)
-    if (data !== "Request failed with status code 429") {
+    if (Array.isArray(data)) {
 
         daysOfTheWeek = data.map(days => {
             let weatherComponent = (
