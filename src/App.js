@@ -82,12 +82,13 @@ function App() {
             return weatherComponent;
         });
     } else {
-        daysOfTheWeek = (
-            <div style={{ display: 'flex', justifyContent: 'center',flexDirection:'column', alignItems: 'center', color: 'red' }}>
-                <h2>{data}</h2>
-                <p>Please come back later and try again</p>
-            </div>
-        )
+        daysOfTheWeek = ""
+        // daysOfTheWeek = (
+        //     <div style={{ display: 'flex', justifyContent: 'center',flexDirection:'column', alignItems: 'center', color: 'red' }}>
+        //         <h2>{data}</h2>
+        //         <p>Please come back later and try again</p>
+        //     </div>
+        // )
     }
 
     // Generates the map image URL if cityInfo's Latitude and Longitude properties exist 
@@ -121,7 +122,10 @@ function App() {
 
             />
 
-            <div style={{ display: 'flex', justifyContent: 'center', margin:'10px 10px 10px 10px' }}>
+            <div className='weatherAndCardInfo'>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <CityInfoCard key={'CityInfoCard'} displayMap={displayMap} cityInfo={cityInfo} />
+                </div>
                 <div id='weatherDisplay' style={{ display: displayWeatherData, padding: '6px 6px 6px 6px' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', margin: '45px auto auto auto' }}>
                         <img src='https://i.gifer.com/4jwl.gif' alt='thunder cloud' style={{ width: '100px', height: '100px', alignItems: 'center' }} />
@@ -133,9 +137,6 @@ function App() {
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <CityInfoCard key={'CityInfoCard'} displayMap={displayMap} cityInfo={cityInfo} />
-                </div>
             </div>
             <Movie key={'Movie'} movieError={movieError} show={show} setShow={setShow} movieData={movieData} />
         </div>
